@@ -8,7 +8,7 @@ before_filter :require_user
  
   def index
   if current_user.roles.where(:name => 'admin').present?
-    @users = User.where('child = ?', false)
+    @users = User.all
 
     respond_to do |format|
       format.html # index.html.erb
