@@ -38,7 +38,6 @@ Churchos::Application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'example.com',
     user_name:            'chasesnelgrove@gmail.com',
     password:             'jms2:19!',
     authentication:       'plain',
