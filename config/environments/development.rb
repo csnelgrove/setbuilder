@@ -35,7 +35,6 @@ Churchos::Application.configure do
   config.assets.debug = true
   
   config.action_mailer.delivery_method = :sendmail
-  config.action_mailer.default_options = {from: 'no-reply@run.church'}
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
 
