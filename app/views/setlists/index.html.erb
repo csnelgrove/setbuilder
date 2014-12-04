@@ -1,0 +1,46 @@
+<div class="row col-md-12" style="margin-bottom: 20px;">
+<div class="col-md-6">
+<h2> Viewing Setlist's </h2>
+</div>
+<div class="col-md-6">
+<br>
+<%= link_to 'New Setlist', new_setlist_path, :class => "btn btn-success", :style => "float: right; "%>
+</div>
+</div>
+<br>
+<div class="row content_row">
+
+<table class="table">
+  <tr>
+
+	<th>Name</th>
+    <th>Service date</th>
+    <th>Published</th>
+	<th>Songs</th>
+    <th></th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+<% @setlists.each do |setlist| %>
+  <tr>
+    
+	<td></td>
+    <td><%= setlist.service_date.strftime("%A, %B %d") %></td>
+	<td><% if setlist.published? %> <i class="fa fa-check-circle" style="color: #006600"></i> <%else%><i class="fa fa-times-circle" style="color: #990000"></i><%end%> </td>
+		<% @items = setlist.setlist_items.rank(:song_order) %>
+		<td><% @items.each do |item| %>
+		<%=item.song.song_title%> (<%=item.song.key%>)<br>
+		<% end %>
+	</td>
+    <td></td>
+    <td><a class="btn btn-primary" href = "/changeset?id=<%=setlist.id%>"><i class="fa fa-pencil-square-o"></i></a></td>
+    <td><%= button_to '-', setlist, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+</div>

@@ -1,0 +1,26 @@
+
+<h2 class="page-header"> Song Search 
+<%= link_to 'Add Song', new_song_path, :class => "btn btn-success", :style => "float: right;" %>	</h2>
+
+
+<%= javascript_include_tag "song.js" %>
+<%= javascript_include_tag "fly_to_list.js" %>
+	
+
+<div class="row content_row">
+
+
+
+
+	<%= form_tag song_search_path, :method => 'get', :id => "song_search_form" do %>
+
+		 <div id="song_search_box" style="margin-bottom: 20px;"> <%= text_field_tag :search, params[:search], :placeholder => "Search For A Song", :class => "form-control col-md-4", :id => "song_search_field" %> </div>
+
+		    <%= submit_tag "Search", :name => nil, :disabled => true, :hidden => true, :id => "searchsubmit" %>
+		<% end %>
+
+		<div id="song_search_results"></div>
+
+	
+</div>
+

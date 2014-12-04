@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Published:</b>
+  <%= @setlist.published %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @setlist.user_id %>
+</p>
+
+<p>
+  <b>Service date:</b>
+  <%= @setlist.service_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_setlist_path(@setlist) %> |
+<%= link_to 'Back', setlists_path %>

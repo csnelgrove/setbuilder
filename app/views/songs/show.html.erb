@@ -1,0 +1,33 @@
+
+<div class="row col-md-12 page-header" >
+    <div class="col-md-8" style="height: 130px; vertical-align: top;">
+           <h1> <%= @song.song_title %> <br> <small><% if @song.alt_title.blank? %> <%else%> (<%=@song.alt_title%>) <%end%> <%= @song.key %> <%if @song.tempo.blank? %> <%else%> <%= @song.tempo %> BPM <%end%>	</small></h1>
+			<%= link_to 'Edit', edit_song_path(@song), :class => "btn btn-success", :style => "float: left;" %> 
+			<%= form_for @setlist_item, remote: true do |f| %>
+		            <%= f.hidden_field :song_id, value: @song.id %>
+		           &nbsp  <%= f.submit "Add to Setlist", class: "btn btn-primary add_to_list", :onclick => "window.location.reload()" %>
+
+
+		      <% end %>
+	</div>
+	<div class="col-md-2" style="padding-top: 10px">
+
+	<a href="<%= @song.chart.url %>" target="top"><button type="button" class="btn btn-primary" >
+		<div style="position: absolute;"><%= image_tag @song.chart.url(:thumb) %></div>
+		<div style="position: relative; width: 90px; height: 120px; padding-top: 10px;" ><h4 style="color: #666;  line-height: 120%;"><i class="fa fa-lg fa-cloud-download"></i><br> Chord<br> Chart</h4></div></button></a></div>
+	<div class="col-md-2" style="padding-top: 10px">
+		<a href="<%= @song.chart.url %>" target="top"><button type="button" class="btn btn-primary">
+		<div style="position: absolute;"><%= image_tag @song.vocal_sheet.url(:thumb) %></div>
+		<div style="position: relative; width: 90px; height: 120px; padding-top: 10px;" ><h4 style="color: #666;  line-height: 120%;"><i class="fa fa-lg fa-cloud-download"></i><br> Vocal<br> Sheet</h4></div></button></a></div>
+		</a>
+	<div class="col-md-1">
+
+	</div>
+	
+</div>
+<div class="content_row">
+
+
+	<object class ="col-md-12 container" height="500"	data="http://www.youtube.com/v/<%= @song.youtube_link %>" style="padding-top: 20px;"></object>
+
+</div>

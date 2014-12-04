@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  family_id: 1
+  content: MyString
+  subject: MyString
+  status_tag: MyString
+
+two:
+  user_id: 1
+  family_id: 1
+  content: MyString
+  subject: MyString
+  status_tag: MyString

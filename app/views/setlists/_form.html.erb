@@ -1,0 +1,51 @@
+<%=javascript_include_tag "sort_setlist.js"%>
+
+<%= form_for(@setlist) do |f| %>
+  <% if @setlist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@setlist.errors.count, "error") %> prohibited this setlist from being saved:</h2>
+
+      <ul>
+      <% @setlist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :published %><br />
+    <%= f.check_box :published %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :service_date %><br />
+    <%= f.date_select :service_date %>
+  </div>
+ 
+
+<table class="table table-bordered table-striped" id="sortable">
+  <thead>
+    <tr>
+      <th>
+        Title
+      </th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <% @setlist_items.each do |item| %>
+      <tr data-item-id=<%= "#{item.id}" %> class="item">
+        <td>
+          <%= item.song.song_title %>
+        </td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+ <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

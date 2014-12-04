@@ -1,0 +1,92 @@
+<!-- Page Heading -->
+
+<%= form_for @user do |f|  %>
+<%= render "shared/error_messages", :target => @user %>
+ 
+  <div class="row">
+       <div class="col-lg-12">
+           <div class="page-header">    <h1>
+	<%= image_tag @user.avatar.url(:medium), :class => "profile_button_large"%>
+           <%=@user.name%></h1>
+		Change Avatar: <%= f.file_field :avatar %> </div> 
+ 
+         
+    
+       </div>
+   </div>
+
+   <div class="row content_row">
+
+
+	
+	
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs" role="tablist">
+	  <li class="active"><a href="#account" role="tab" data-toggle="tab">Account</a></li>
+	  <li><a href="#contact" role="tab" data-toggle="tab">Contact Info</a></li>
+	  <li><a href="#place" role="tab" data-toggle="tab">PLACE Profile</a></li>
+	  
+	</ul>
+
+	<!-- Tab panes -->
+	<div class="tab-content">
+	  <div class="tab-pane active" id="account">
+		<div class="row">
+		<div class="col-md-4">
+
+			<br>
+
+		<%= f.text_field :name, :placeholder => "Name", :class => "form-control" %><br />
+
+		<%= f.text_field :email, :placeholder => "Email Address", :class => "form-control" %><br />
+
+		<%= f.password_field :password, :placeholder => "Password", :class => "form-control" %><br />
+
+		<%= f.password_field :password_confirmation, :placeholder => "Confirm Password", :class => "form-control" %><br />
+		
+	    Active?	<%= f.check_box :active %> <br />
+		</div>
+		<div class="col-md-2"></div>
+		<div class="col-md-4" style="margin-top: -50px;">
+		<br>
+		<h2 class="page-header"><small> Roles</small></h2>
+		<% Role.all.each do |role| %>
+		<%= check_box_tag 'user[role_ids][]', role.id, @user.roles.include?(role) %>
+		<%= role.description%><br><br>
+		<% end %>  	
+	    </div>
+		</div>
+	  </div>
+	
+	
+	
+	  <div class="tab-pane" id="contact">
+		<%= f.fields_for :profile do |profile_form| %>
+		      <%= profile_form.label :street_1 %>
+		      <p><%= profile_form.text_field :street_1 %></p>
+
+		      <%= profile_form.label :street_2 %>
+		      <p><%= profile_form.text_field :street_2 %></p>
+
+			  <%= profile_form.label :city %>
+		      <p><%= profile_form.text_field :city %></p>
+
+			  <%= profile_form.label :state %>
+		      <p><%= profile_form.text_field :state %></p>
+
+			  <%= profile_form.label :zip_code %>
+		      <p><%= profile_form.text_field :zip_code %></p>
+		    <% end %>
+	  	
+	
+	  </div>
+	
+	
+	
+<br>
+  <%= javascript_include_tag "users.js" %>
+
+<%= f.submit "Update", :class => "btn btn-primary" %>
+<% end %>
+
+</div>

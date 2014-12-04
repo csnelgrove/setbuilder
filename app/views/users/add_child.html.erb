@@ -1,0 +1,32 @@
+<div style="padding: 20px;">
+<h2 class="page-header">Add Your Child</h2>
+
+<%= form_for @user do |f| %>
+	<%= f.text_field :name, :placeholder => "First & Last Name", :class => "form-control" %><br />
+	
+	<div class="col-md-5">
+	<%= f.label :birthday %><br />
+	<div class='input-group date' id='birthday'>
+	<%= f.text_field :birthday, :class => "form-control", :data => { :behaviour => "datepicker"} %>
+	<span class="input-group-addon"> <i class="fa fa-calendar"></i></span></div>
+     </div>
+	
+	<%= f.hidden_field :password, :value => "blankpassword" %>
+	<%= f.hidden_field :password_confrimation, :value => "blankpassword" %>
+	<%= f.hidden_field :email, :value => "this@blank.com" %>
+	<%= f.hidden_field :active, :value => false %>
+	<%= f.hidden_field :child, :value => true%>
+<br>
+
+	
+	<button type="submit" name="commit" value="child" id=".." class="btn btn-success">Add Child  </button>
+	<% end %>
+</div>	
+	<script>
+	$(function() {
+		
+	$('#birthday').datetimepicker({pickTime: false,format: 'YYYY-MM-DD'});
+
+	});
+	
+	</script>

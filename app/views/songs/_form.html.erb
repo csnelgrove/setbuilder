@@ -1,0 +1,69 @@
+
+
+<%= form_for(@song) do |f| %>
+
+<h2>Editing <%= @song.song_title %> </h2>
+   <div class="row content_row">
+
+
+  <% if @song.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@song.errors.count, "error") %> prohibited this song from being saved:</h2>
+
+      <ul>
+      <% @song.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row col-md-12" >
+
+<div class ="row col-md-5">
+
+  <div class="field">
+    <%= f.label :song_title, :name => "Alternate Title" %>
+    <%= f.text_field :song_title, :class => "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :alt_title, :name => "Alternate Title" %>
+    <%= f.text_field :alt_title, :class => "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :key %>
+    <%= f.text_field :key, :class => "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :tempo %>
+    <%= f.number_field :tempo, :class => "form-control" %>
+  </div>
+
+	<div class ="row col-md-6">
+	<strong>Chord Chart:</strong><br> 
+	<a href="<%= @song.chart.url %>" target="top"><button type="button" class="btn btn-default"><%= image_tag @song.chart.url(:thumb) %></button></a>
+	<br><%= f.file_field :chart, :label => "Update Chart" %>
+	</div>
+	<div class ="row col-md-6">
+	<strong>Vocal Sheet</strong>:<br>
+	<a href="<%= @song.vocal_sheet.url %>" target="top" > <button type="button" class="btn btn-default"><%= image_tag @song.vocal_sheet.url(:thumb) %></button> </a> 
+	<br><%= f.file_field :vocal_sheet %>	
+	</div>	
+</div>
+
+<div class ="col-md-5">
+	<%= f.label :youtube_link, "YouTube ID" %><br />
+    <%= f.text_field :youtube_link, :class => "form-control" %><br><br>
+	<object class ="col-md-12" height="300"
+	data="http://www.youtube.com/v/<%= @song.youtube_link %>">
+	</object>
+</div>
+
+</div>
+<div class="row col-md-10" >
+  <div class="actions" style="float: right; margin-top: 20px; margin-right: 60px;">
+    <%= f.submit :class => "btn btn-primary" %>
+  </div>
+<% end %>
+</div>
+</div>

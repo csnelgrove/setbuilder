@@ -1,0 +1,45 @@
+<!-- Page Heading -->
+   <div class="row">
+       <div class="col-lg-12">
+           <h2 class="page-header">
+               Manage Users <small></small>
+           </h2>     
+       </div>
+   </div>
+
+
+   <div class="row content_row">
+	<table class="table">
+
+		<th></th>
+	    <th>Name</th>
+	    <th>Email</th>
+	    <th>Last Login</th>
+	    <th>Administrator</th>
+	    <th></th>
+	    <th></th>
+
+
+	<% @users.each do |user| %>
+	  <tr>
+		<td><%= image_tag user.avatar.url(:medium), :class => "profile_button_small"%></td>
+	    <td><%= link_to user.name, edit_user_path(user), method: :get%></td>
+	    <td><%= user.email %></td>
+	    <td><%= user.last_login_at %></td>
+	    <td><% if user.roles.where(:name => 'admin').present?%><center><i class="fa fa-check-circle" style="color: #71C671;"></i></center> <%else%>  <%end%></td>
+
+
+
+	    <td><%= button_to 'Remove', user, confirm: 'Are you sure?', method: :delete, :class =>"btn btn-danger" %></td>
+	  </tr>
+	<% end %>
+	</table>
+
+	<br />
+
+	<%= link_to 'New User', new_user_path, :class => "btn btn-success" %>
+
+	
+    </div> 
+   <!-- /.row -->
+

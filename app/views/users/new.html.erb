@@ -1,0 +1,25 @@
+<!-- Page Heading -->
+   <div class="row">
+       <div class="col-lg-12">
+           <h2 class="page-header">
+               Add A New User
+           </h2>
+           
+       </div>
+   </div>
+   <!-- /.row -->
+
+
+   <!-- /.row -->
+
+	
+
+<div class="content_row">
+<div class="col-lg-12">
+<%= form_for @user do |f| %>
+<%= render :partial => "form", :object => f, :locals => { :user => @user } %>
+<%= f.submit "Create User", :class => "btn btn-success" %>
+<% end %>
+
+</div>
+</div>

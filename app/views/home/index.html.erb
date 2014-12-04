@@ -1,0 +1,19 @@
+<% if current_user %>
+	
+<%= render "shared/dashboard" %>	
+
+
+
+<% else %>
+
+<center>
+<div class="jumbotron" style="min-height: 600px;" >
+	<div class="panel panel-default" style= "width: 350px; margin-top: 15px; ">
+	<div class="panel-heading"> <h1 style="font-family: 'Unica One', cursive;"><i class="fa fa-music"></i>Set<span style="color: #999">Builder</span></h1></div>
+	  <div class="panel-body">
+	
+	 <%= render :partial => "shared/login" %>
+</div>
+</center>
+
+<%end%>

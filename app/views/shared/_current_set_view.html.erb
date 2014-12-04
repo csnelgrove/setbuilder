@@ -1,0 +1,26 @@
+<%= javascript_include_tag "sort_setlist.js"%>
+
+<table class="table table-striped" id="sortable">
+  <thead>
+    <tr>
+      <th>Song</th>
+<th>Key</th>
+<th>Tempo</th>
+<th>Chart</th>
+<th>Vocal Sheet</th>
+    </tr>
+  </thead>
+  <tbody>
+	<% @setlist_items = current_setlist.setlist_items.rank(:song_order) %>
+    <% @setlist_items.each do |item| %>
+      <tr data-item-id=<%= "#{item.id}" %> class="item">
+        <td> <%= item.song.song_title %></td>
+         <td> <%= item.song.key %></td>
+		<td> <%= item.song.tempo %></td>
+		<td><% if !item.song.chart.file? %> <i class="fa fa-lg fa-times-circle" title="Missing"></i> <%else%> <a href =<%= item.song.chart.url %>> <i class="fa fa-lg fa-cloud-download"></i></a> <%end%></td>
+		<td><% if !item.song.vocal_sheet.file? %> <i class="fa fa-lg fa-times-circle" title="Missing"></i><%else%> <a href =<%= item.song.vocal_sheet.url %>> <i class="fa fa-lg fa-cloud-download"></i></a><%end%></td>
+		<td><%= button_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn, btn-danger" %></td>
+</tr>
+    <% end %>
+  </tbody>
+</table>

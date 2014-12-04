@@ -1,0 +1,20 @@
+
+<table class="table">
+
+<% @available_users.each do |user| %>
+  <tr>
+	<td> <%= image_tag user.avatar.url(:medium), :class => "profile_button_large"%></td>
+    <td><h4><%= user.name %></h4></td>
+  
+	<td>
+	<a href="/family/add_family_member?view=popup&mid=<%=user.id%>" data-toggle="modal" data-target="#remoteModal2" class="btn btn-success btn" style="float: left;"><i class="fa fa-plus"></i> Add Family Member</a>  
+
+	<!-- Modal -->  
+	<div class="modal fade" id="remoteModal2" tabindex="-1" role="dialog" aria-labelledby="remoteModalLabel" aria-hidden="true">  
+	    <div class="modal-dialog">  
+	        <div class="modal-content"></div>  
+	    </div>  
+	</div></td>
+  </tr>
+<% end %>
+</table>

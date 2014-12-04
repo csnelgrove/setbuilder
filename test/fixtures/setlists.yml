@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  published: false
+  user_id: MyString
+  service_date: 2014-12-02
+
+two:
+  published: false
+  user_id: MyString
+  service_date: 2014-12-02

@@ -1,0 +1,15 @@
+
+<%= render 'layouts/messages' %>
+<%= form_for(:user_session, :url => user_sessions_url) do |f| %>
+    
+
+    <%= f.text_field :email, :class=> "form-control", :placeholder => "Email Address" %><br>
+
+    <%= f.password_field :password, :class=> "form-control", :placeholder => "Password" %> <br>
+
+Remember Me ? <%= check_box :user_session, :remember_me %><br>
+  <div class="actions">
+
+    <%= f.submit "Login", :class => "btn btn-default" %>
+  </div>
+<% end %>

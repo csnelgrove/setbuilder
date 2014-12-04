@@ -1,0 +1,5 @@
+<% if @setlist.errors.any? || @setlist_item.errors.any? %>
+alert("not valid.")
+<% else %>
+  $(".setlist-text").html("<%= escape_javascript(render 'layouts/setlist_text') %>")
+<% end %>

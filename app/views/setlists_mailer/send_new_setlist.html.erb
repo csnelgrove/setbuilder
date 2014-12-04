@@ -1,0 +1,17 @@
+<p>Hello,</p>
+
+<p>A New Setlist had Been created for <%=@setlist.service_date%></p>
+
+
+<ul>
+<% @setlist_items.each do |item|%>
+<li><a href="http://localhost:3000/songs/<%=item.song.id%>"> <%= item.song.song_title %> - <%= item.song.key %> </a></li>
+<% end %>
+
+</ul>
+
+
+<p>Thanks,</p>
+
+
+<p><%= @user.name %></p>

@@ -1,0 +1,96 @@
+
+
+<%= javascript_include_tag "family.js" %>
+   <div class="row content_row">
+<div class="row col-md-12">
+	<div class="col-md-6">
+		<div class="panel panel-default" style="min-height: 400px;">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Pending Family Requests</h3>
+		  </div>
+     <div class="panel-body">
+	<table>
+	<%  @pending_requests.each do |request|%>
+	<tr>
+	<td class="col-md-5"> Are you <%= request.user.name %>'s <%= request.relationship %> ? </td>
+	<td><a href="/family/verify?rid=<%=request.id%>" class="btn btn-success btn-xs" style="float: right; ">Yes</a></td>	
+	</tr>
+	<%end%>
+
+
+	</table>
+	</div></div>
+	</div>
+
+
+<div class="col-md-6">
+		<div class="panel panel-default" style="min-height: 400px;">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">My Family </h3>
+		  </div>
+		<div class="panel-body">
+			<div style="min-height: 270px;">
+	<table class="table" >
+	  <tr>
+		<th></th>
+	    <th>Name</th>
+	    <th>Relationship</th>
+		<th>Verified</th>
+		<th>Remove</th>
+	  </tr>
+	<% @list_family_memberships.each do |membership| %>
+	  <tr>
+		<td> <%= image_tag membership.family_member.avatar.url(:medium), :class => "profile_button_small"%></td>
+	    <td><%= membership.family_member.name %></td>   
+		 <td><%= membership.relationship %></td>
+			<td><% if membership.verified.nil? || membership.verified == false  %><%else%><i class="fa fa-check-circle" style="color: #71C671;"></i> <%end%></td>
+			
+		<td><%= button_to "-", family_path(membership), :method => :delete, :class => "btn btn-danger" %></td>
+	  </tr>
+	<% end %>
+	</table>
+	</div>
+	<center>
+		<a href="/family/addmychild?view=popup" data-toggle="modal" data-target="#remoteModal1" class="btn btn-primary btn" style="float: left;"> 		Add A Child </a>  
+
+		<!-- Modal -->  
+		<div class="modal fade" id="remoteModal1" role="dialog" aria-labelledby="remoteModalLabel" aria-hidden="true">  
+		    <div class="modal-dialog">  
+		        <div class="modal-content"></div>  
+		    </div>
+	</center>
+
+
+</div></div>
+
+</div>
+</div>
+	<br />
+
+<div class="row col-md-12">
+
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Add New Family Members</h3>
+	  </div>
+	  <div class="panel-body">
+	   
+		<%= form_tag family_search_path, :method => 'get', :id => "family_search_form" do %>
+
+			 <div id="family_search_box"> <%= text_field_tag :search, params[:search], :placeholder => "Search For A Family Member", :class => "form-control col-md-4" %> </div>
+
+			    <%= submit_tag "Search", :name => nil, :disabled => true, :hidden => true %>
+			<% end %>
+
+			<div id="family_search_results"></div>
+	  </div>
+	</div>
+
+
+
+	
+</div>
+    </div> 
+   <!-- /.row -->
+
+

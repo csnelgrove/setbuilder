@@ -1,0 +1,95 @@
+<!-- Page Heading -->
+
+<%= form_for @user do |f|  %>
+<%= render "shared/error_messages", :target => @user %>
+ 
+  <div class="row">
+       <div class="col-lg-12">
+           <div class="page-header">    <h1>
+	<%= image_tag @user.avatar.url(:medium), :class => "profile_button_large"%>
+           <%=@user.name%></h1>
+		Change Avatar: <%= f.file_field :avatar %> </div> 
+ 
+         
+    
+       </div>
+   </div>
+
+   <div class="row content_row">
+
+
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs" role="tablist">
+	  <li class="active"><a href="#account" role="tab" data-toggle="tab">Account</a></li>
+	  <li><a href="#contact" role="tab" data-toggle="tab">Contact Info</a></li>
+	  <li><a href="#place" role="tab" data-toggle="tab">PLACE Profile</a></li>
+	  <li><a href="#family" role="tab" data-toggle="tab">Family</a></li>
+	</ul>
+
+	<!-- Tab panes -->
+	<div class="tab-content">
+	  <div class="tab-pane active" id="account">
+		<div class="row">
+		<div class="col-md-4">
+
+			<br>
+
+		<%= f.text_field :name, :placeholder => "Name", :class => "form-control" %><br />
+
+		<%= f.text_field :email, :placeholder => "Email Address", :class => "form-control" %><br />
+
+		<%= f.password_field :password, :placeholder => "Password", :class => "form-control" %><br />
+
+		<%= f.password_field :password_confirmation, :placeholder => "Confirm Password", :class => "form-control" %>
+		</div>
+		<div class="col-md-2"></div>
+		<div class="col-md-4" style="margin-top: -50px;">
+		<br>
+
+	    </div>
+		</div>
+	  </div>
+	
+	
+	
+	  <div class="tab-pane" id="contact">
+		<%= f.fields_for :profile do |profile_form| %>
+		      <%= profile_form.label :street_1 %>
+		      <p><%= profile_form.text_field :street_1 %></p>
+
+		      <%= profile_form.label :street_2 %>
+		      <p><%= profile_form.text_field :street_2 %></p>
+
+			  <%= profile_form.label :city %>
+		      <p><%= profile_form.text_field :city %></p>
+
+			  <%= profile_form.label :state %>
+		      <p><%= profile_form.text_field :state %></p>
+
+			  <%= profile_form.label :zip_code %>
+		      <p><%= profile_form.text_field :zip_code %></p>
+		    <% end %>
+	  	
+	
+	  </div>
+	  <div class="tab-pane" id="place">...3</div>
+	  <div class="tab-pane" id="family">
+	  		<h2>Family</h2>
+			<ul>
+			  <% for family in @user.families %>
+			    <li>
+			      <%=h family.user.name %>
+
+			    </li>
+			  <% end %>
+			</ul>
+	  </div>
+	</div>
+	
+	
+<br>
+
+<%= f.submit "Update", :class => "btn btn-primary" %>
+<% end %>
+
+</div>
