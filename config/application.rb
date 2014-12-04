@@ -60,7 +60,7 @@ module Churchos
     config.assets.version = '1.0'
     
     
-    config.action_mailer.delivery_method = :sendmail
+  
     
   end
 end
