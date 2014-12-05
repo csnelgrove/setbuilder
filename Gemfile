@@ -26,7 +26,6 @@ gem 'best_in_place'
 gem "highcharts-rails", "~> 3.0.0"
 gem "paperclip", "~> 4.2"
 gem 'will_paginate'
-gem 'stripe'
 gem 'ranked-model'
 
 
