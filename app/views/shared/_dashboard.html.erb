@@ -1,6 +1,46 @@
 <!-- Page Heading -->
-<h3><%= image_tag current_user.avatar.url(:medium), :class => "profile_button_large"%> Welcome, <%=current_user.name%>! </h3>
-<div class="row content_row">
+
+<div class="row content_row" style="margin-top: 30px;">
+
+<div class="row">
+
+<div class = "col-md-5">
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><strong>This Weeks Setlist</strong></div>
+  <div class="panel-body">
+    <p>Cool message from joseph, or whomever. Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.</p>
+  </div>
+
+  <!-- Table -->
+<table class="table">
+	<% thisweek_setlist.setlist_items.each do |item| %>
+		<tr>
+			<td><a href ="/songs/<%=item.song.id%>"><%= item.song.song_title %></a> <% if item.song.alt_title.blank? %> <%else%> (<%= item.song.alt_title %>) <%end%></td>
+			<td><%= item.song.key %></td>
+			<td><% if !item.song.chart.file? %> <i class="fa fa-lg fa-times-circle" title="Missing"></i> <%else%> <a href =<%= item.song.chart.url %>> <i class="fa fa-lg fa-cloud-download"></i></a> <%end%></td>
+			<td><% if !item.song.vocal_sheet.file? %> <i class="fa fa-lg fa-times-circle" title="Missing"></i><%else%> <a href =<%= item.song.vocal_sheet.url %>> <i class="fa fa-lg fa-cloud-download"></i></a><%end%></td>
+			
+		</tr>
+	<% end %>
+</table>
+</div>
+</div>
+
+
+
+<div class = "col-md-4">
+<div class="panel panel-success">
+	<div class="panel-heading"><strong>Team Wall</strong></div>
+	<div class="panel-body">
+	    <p>Cool message from joseph, or whomever. Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.</p>
+	  </div>
+	</div>
+</div>
+</div>
+
+</div>
+
 
 </div>
 

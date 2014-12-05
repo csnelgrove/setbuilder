@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   #filter_parameter_logging :password, :password_confirmation # there are underscores :-|
 
-  helper_method :current_user_session, :current_user, :my_notifications, :my_new_notifications, :children, :current_setlist
+  helper_method :current_user_session, :current_user, :my_notifications, :my_new_notifications, :children, :current_setlist, :thisweek_setlist
   before_filter :current_setlist 
  
   private
@@ -24,6 +24,15 @@ class ApplicationController < ActionController::Base
         
       end
  
+ 
+      def thisweek_setlist
+      @setlist = Setlist.where(:service_date => Date.today - Date.today.wday + 7).last
+      @setlist
+        
+      end
+      
+      
+      
   private
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
