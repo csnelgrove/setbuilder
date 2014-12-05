@@ -28,6 +28,11 @@ gem 'will_paginate'
 gem 'stripe'
 gem 'ranked-model'
 
+
+group :production do
+  gem 'mysql2'
+  
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
