@@ -10,7 +10,7 @@
   <div class="panel-heading"><strong>This Weeks Setlist</strong></div>
   <div class="panel-body" >
       <% if !thisweek_setlist.nil? %>
-   <%=thisweek_setlist.publish_message.html_safe %>
+   <%=thisweek_setlist.publish_message.to_s.html_safe %>
       <% end %>
   </div>
  <% if !thisweek_setlist.nil? %>
