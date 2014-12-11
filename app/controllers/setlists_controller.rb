@@ -59,6 +59,7 @@ class SetlistsController < ApplicationController
     
     respond_to do |format|
       if @setlist.update_attributes(params[:setlist])
+        @setlist.update_attribute(:published, true)
         SetlistsMailer.send_new_setlist(current_user, @setlist, @setlist_items).deliver       
         format.html { redirect_to :root, :notice => 'Setlist Published' }
         format.json { head :ok }
