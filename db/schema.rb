@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141211200323) do
+ActiveRecord::Schema.define(:version => 20141211203337) do
 
   create_table "families", :force => true do |t|
     t.integer  "user_id"
@@ -53,10 +53,10 @@ ActiveRecord::Schema.define(:version => 20141211200323) do
 
   create_table "posts", :force => true do |t|
     t.string   "user_id"
-    t.string   "message"
+    t.text     "message",    :limit => 255
     t.boolean  "published"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "profiles", :force => true do |t|
@@ -101,9 +101,9 @@ ActiveRecord::Schema.define(:version => 20141211200323) do
     t.boolean  "published"
     t.string   "user_id"
     t.date     "service_date"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.string   "publish_message"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.text     "publish_message", :limit => 255
   end
 
   create_table "songs", :force => true do |t|
