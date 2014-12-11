@@ -58,11 +58,11 @@
 		<div class="col-md-9" style="margin: 10px;"><%= post.message.html_safe %>
             <% if post.user == current_user %>
             <span>
-            <%= link_to 'Delete This Post', post, method: :delete, data: { confirm: 'Are you sure?' }, :style => "float: right;" %></div>
+            <%= link_to 'Delete This Post', post, method: :delete, data: { confirm: 'Are you sure?' }, :style => "float: right;" %>
            </span>
             <%else%>
             <%end%>
-
+         </div>
         </div>
         <%end%>
             <a href="/posts/new?view=popup" data-toggle="modal" data-target="#remoteModal3" class="btn btn-success btn" style="float: left;"> Add Post</a>
