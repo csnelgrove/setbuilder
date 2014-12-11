@@ -10,14 +10,6 @@
 </script>
 
 <div style="padding: 10px;">
-	<%= form_for current_setlist, remote: true do |f| %>
-      		<%= f.label :service_date %><br />
-			<div class='input-group date' id='servicedate' >
-			<%= f.text_field :service_date, :class => "form-control", :data => { :behaviour => "datepicker"} %>
-			<span class="input-group-addon"> <i class="fa fa-calendar"></i></span></div>
-            <%= f.submit "Save Date", :class => "btn btn-primary", :style => "float: right; margin: 8px;" %>
-      <% end %>
-	<br><br>
 <table class="table table-striped" id="sortable">
 <th>Song</th>
 <th>Leader</th>
@@ -25,12 +17,17 @@
 <tr> 
  	
 </tr>
+
+
+
+
+    <% @vocalists = Role.find_by_name('vocalist').users %>
 	<% @setlist_items = current_setlist.setlist_items.rank(:song_order) %>
     <% @setlist_items.each do |item| %>
       <tr data-item-id=<%= "#{item.id}" %> class="item">
         <td> <%= item.song.song_title %></td>
 		<td> <%= form_for item, :remote => true do |f|  %>
-			<%= best_in_place item, :leader_id, :type => :select, :collection => User.all.collect {|p| [ p.id, p.name ]}  %>
+			<%= best_in_place item, :leader_id, :type => :select, :collection => @vocalists.collect {|p| [ p.id, p.name ]}  %>
 
 			<%end%>
 			</td>

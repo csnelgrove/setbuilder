@@ -3,11 +3,12 @@
 
 
 
-
-
 <%= form_for @setlist, :remote => true, :url => { :action => :publish_new } do |f| %>
 
-
+<%= f.label :service_date %><br />
+			<div class='input-group date' id='servicedate2'>
+			<%= f.text_field :service_date, :class => "form-control", :data => { :behaviour => "datepicker"} %>
+			<span class="input-group-addon"> <i class="fa fa-calendar"></i></span></div>
 
 <h4>Add A Message:</h4>
 <%= f.text_area :publish_message, :class => "tinymce", :style => "height: 300px;"%>
@@ -17,3 +18,14 @@
 
 
 <%end%>
+
+
+<script>
+$(function() {
+
+$('#servicedate2').datetimepicker({pickTime: false,format: 'YYYY-MM-DD'});
+
+});
+
+
+</script>
