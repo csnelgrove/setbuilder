@@ -9,12 +9,14 @@
   <!-- Default panel contents -->
   <div class="panel-heading"><strong>This Weeks Setlist</strong></div>
   <div class="panel-body">
-    <p>Cool message from joseph, or whomever. Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.Cool message from joseph, or whomever.</p>
+      <% if !thisweek_setlist.nil? %>
+    <p> </p>
+      <% end %>
   </div>
-
+ <% if !thisweek_setlist.nil? %>
   <!-- Table -->
 <table class="table">
-	<% thisweek_setlist.setlist_items.each do |item| %>
+	<% thisweek_setlist.setlist_items.rank(:song_order).each do |item| %>
 		<tr>
 			<td><a href ="/songs/<%=item.song.id%>"><%= item.song.song_title %></a> <% if item.song.alt_title.blank? %> <%else%> (<%= item.song.alt_title %>) <%end%></td>
 			<td><%= item.song.key %></td>
@@ -24,6 +26,7 @@
 		</tr>
 	<% end %>
 </table>
+<%end%>
 </div>
 </div>
 

@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
  
  
       def thisweek_setlist
-      @setlist = Setlist.where(:service_date => Date.today - Date.today.wday + 7).last
+      @setlist = Setlist.where(:service_date => Date.today - Date.today.wday + 7, :published => true).last
       @setlist
         
       end
