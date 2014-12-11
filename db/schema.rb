@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141211164809) do
+ActiveRecord::Schema.define(:version => 20141211200323) do
 
   create_table "families", :force => true do |t|
     t.integer  "user_id"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20141211164809) do
   create_table "posts", :force => true do |t|
     t.string   "user_id"
     t.string   "message"
-    t.boolean  "publised"
+    t.boolean  "published"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

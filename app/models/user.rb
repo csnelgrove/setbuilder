@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
       has_many :families
       has_many :family_members, :through => :families
       has_many :notifications
+      has_many :posts
       accepts_nested_attributes_for :profile, :allow_destroy => true
       after_create :build_profile
       

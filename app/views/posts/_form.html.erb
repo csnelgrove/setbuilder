@@ -1,3 +1,5 @@
+<%= tinymce %>
+
 <%= form_for(@post) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
@@ -12,17 +14,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+
+    <%= f.text_area :message, :class => "tinymce", :style => "height: 300px;"%>
   </div>
-  <div class="field">
-    <%= f.label :message %><br />
-    <%= f.text_field :message %>
-  </div>
-  <div class="field">
-    <%= f.label :publised %><br />
-    <%= f.check_box :publised %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
