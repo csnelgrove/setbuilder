@@ -15,6 +15,8 @@
         <!-- Top Menu Items -->
 
         <ul class="nav navbar-right top-nav">
+
+            <% if current_user.roles.where(:name =>"worship_leader").present?%>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
@@ -30,19 +32,14 @@
                   	<li ><%=  render "shared/current_set_edit" %></li>   
                 </ul>
             </li>
-
+            <%end%>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">	<%= image_tag current_user.avatar.url(:medium), :class => "profile_button_tiny"%> <%= current_user.name %> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
                         <a href="/profile"><i class="fa fa-fw fa-user"></i> Profile</a>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                    </li>
+
                     <li class="divider"></li>
                     <li>
                         <a href="/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
@@ -61,6 +58,7 @@
                     <a href="/songs"><i class="fa fa-fw fa-music"></i> Song Search</a>
                 </li>
 			
+                		<% if current_user.roles.where(:name =>"worship_leader").present?%>
       			<li>
 					
                     <a href="javascript:;" data-toggle="collapse" data-target="#setlist_menu"><i class="fa fa-fw fa-list"></i> Manage Setlists <i class="fa fa-fw fa-caret-down"></i></a>
@@ -73,7 +71,7 @@
                         </li>
                     </ul>
                 </li>
-
+                <%end%>
 					<% if current_user.roles.where(:name =>"admin").present?%>
                 <li>
 					

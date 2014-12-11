@@ -3,8 +3,9 @@ class SongsController < ApplicationController
   # GET /songs.json
   def index
     @songs = Song.all
+     if current_user.roles.where(:name =>"worship_leader").present?
     @setlist_item = current_setlist.setlist_items.new
-    
+     end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @songs }
@@ -15,8 +16,9 @@ class SongsController < ApplicationController
   # GET /songs/1.json
   def show
     @song = Song.find(params[:id])
+      if current_user.roles.where(:name =>"worship_leader").present?
     @setlist_item = current_setlist.setlist_items.new
-    
+       end
     
     respond_to do |format|
       format.html # show.html.erb
@@ -26,7 +28,9 @@ class SongsController < ApplicationController
   
   def song_search
     @songs =  Song.search(params[:search])
+      if current_user.roles.where(:name =>"worship_leader").present?
     @setlist_item = current_setlist.setlist_items.new
+       end
   
   end
 

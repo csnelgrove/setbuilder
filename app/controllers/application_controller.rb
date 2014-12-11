@@ -8,10 +8,14 @@ class ApplicationController < ActionController::Base
  
   private
       def current_setlist
+        if current_user
+        if current_user.roles.where(:name =>"worship_leader").present?
         @setlist = Setlist.where(id: session[:setlist_id]).first 
         @setlist = Setlist.create(:service_date => Date.today - Date.today.wday + 7) if @setlist.nil?
         session[:setlist_id] = @setlist.id
         @setlist
+        end
+        end
       end
       
       def new_setlist

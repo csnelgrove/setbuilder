@@ -3,12 +3,12 @@
     <div class="col-md-8" style="height: 130px; vertical-align: top;">
            <h1> <%= @song.song_title %> <br> <small><% if @song.alt_title.blank? %> <%else%> (<%=@song.alt_title%>) <%end%> <%= @song.key %> <%if @song.tempo.blank? %> <%else%> <%= @song.tempo %> BPM <%end%>	</small></h1>
 			<%= link_to 'Edit', edit_song_path(@song), :class => "btn btn-success", :style => "float: left;" %> 
-			<%= form_for @setlist_item, remote: true do |f| %>
+			<% if current_user.roles.where(:name =>"worship_leader").present? %>
+            <%= form_for @setlist_item, remote: true do |f| %>
 		            <%= f.hidden_field :song_id, value: @song.id %>
 		           &nbsp  <%= f.submit "Add to Setlist", class: "btn btn-primary add_to_list", :onclick => "window.location.reload()" %>
-
-
 		      <% end %>
+        <%end%>
 	</div>
 	<div class="col-md-2" style="padding-top: 10px">
 

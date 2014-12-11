@@ -56,7 +56,7 @@
 
             </div>
 		<div class="col-md-9" style="margin: 10px;"><%= post.message.html_safe %>
-            <% if post.user == current_user %>
+            <% if post.user == current_user || current_user.roles.where(:name =>"admin").present?  %>
             <span>
             <%= link_to 'Delete This Post', post, method: :delete, data: { confirm: 'Are you sure?' }, :style => "float: right;" %>
            </span>

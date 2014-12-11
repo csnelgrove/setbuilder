@@ -21,7 +21,8 @@
 
     <td><%= link_to 'Edit', edit_song_path(song) %></td>
     <td><%= button_to 'Delete', song, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn, btn-danger add_to_list" %></td>
- 	<td><%= form_for @setlist_item, remote: true do |f| %>
+ 	  <% if current_user.roles.where(:name =>"worship_leader").present?%>
+     <td><%= form_for @setlist_item, remote: true do |f| %>
             <%= f.hidden_field :song_id, value: song.id %>
             <%= f.submit "Add to Setlist", class: "btn btn-primary add_to_list", :onclick => "window.location.reload()" %>
        
@@ -29,6 +30,7 @@
       <% end %> 
 
 </td>
+     <%end%>
  </tr>
 <% end %>
 </table>
