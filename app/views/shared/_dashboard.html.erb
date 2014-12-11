@@ -25,7 +25,7 @@
 		<tr>
 			<td><a href ="/songs/<%=item.song.id%>"><%= item.song.song_title %></a> <% if item.song.alt_title.blank? %> <%else%> (<%= item.song.alt_title %>) <%end%></td>
 			<td><%= item.song.key %></td>
-            <td><%= User.where('id = ?',item.leader_id).last.name.split(" ")[0] %></td>
+            <td><% if !item.leader_id? %><%= User.where('id = ?',item.leader_id).last.name.split(" ")[0] %><%end%></td>
 			<td><% if !item.song.chart.file? %> <i class="fa fa-lg fa-times-circle" title="Missing"></i> <%else%> <a href =<%= item.song.chart.url %>> <i class="fa fa-lg fa-cloud-download"></i></a> <%end%></td>
 			<td><% if !item.song.vocal_sheet.file? %> <i class="fa fa-lg fa-times-circle" title="Missing"></i><%else%> <a href =<%= item.song.vocal_sheet.url %>> <i class="fa fa-lg fa-cloud-download"></i></a><%end%></td>
 			
