@@ -19,8 +19,13 @@ class SetlistItemsController < ApplicationController
     def update
       @setlist = current_setlist
       @setlist_item = @setlist.setlist_items.find(params[:id])
-      @setlist_item.update_attributes(setlist_item_params)
+      @setlist_item.update_attributes(params[:setlist_item])
       @setlist_items = @setlist.setlist_items
+
+    respond_to do |format|
+       format.html {  }
+       format.json { head :ok }
+     end
 
 
     end

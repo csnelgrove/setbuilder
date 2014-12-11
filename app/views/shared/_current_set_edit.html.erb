@@ -3,6 +3,12 @@
 
 <%= javascript_include_tag "sort_setlist.js"%>
 
+<script> $(document).ready(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
+});
+</script>
+
 <div style="padding: 10px;">
 	<%= form_for current_setlist, remote: true do |f| %>
       		<%= f.label :service_date %><br />
@@ -24,7 +30,7 @@
       <tr data-item-id=<%= "#{item.id}" %> class="item">
         <td> <%= item.song.song_title %></td>
 		<td> <%= form_for item, :remote => true do |f|  %>
-			<%= f.collection_select :leader_id, User.all ,:id, :name, include_blank: true, :onchange => "this.form.submit()" %>
+			<%= best_in_place item, :leader_id, :type => :select, :collection => User.all.collect {|p| [ p.id, p.name ]}  %>
 
 			<%end%>
 			</td>

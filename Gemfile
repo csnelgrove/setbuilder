@@ -31,6 +31,7 @@ gem 'ranked-model'
 gem 'tinymce-rails'
 
 
+
 group :production do
   gem 'mysql2'
   
