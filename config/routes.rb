@@ -3,6 +3,9 @@ Churchos::Application.routes.draw do
 
 
 
+  resources :posts
+
+
   resources :setlists
   match 'publish_new' => 'setlists#publish_new'
   

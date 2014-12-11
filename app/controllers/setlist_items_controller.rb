@@ -21,6 +21,8 @@ class SetlistItemsController < ApplicationController
       @setlist_item = @setlist.setlist_items.find(params[:id])
       @setlist_item.update_attributes(setlist_item_params)
       @setlist_items = @setlist.setlist_items
+
+
     end
 
     def destroy

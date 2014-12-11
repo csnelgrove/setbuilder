@@ -23,7 +23,11 @@
     <% @setlist_items.each do |item| %>
       <tr data-item-id=<%= "#{item.id}" %> class="item">
         <td> <%= item.song.song_title %></td>
-		<td> <%= User.where("id = ?", item.leader_id).name %></td>
+		<td> <%= form_for item, :remote => true do |f|  %>
+			<%= f.collection_select :leader_id, User.all ,:id, :name, include_blank: true, :onchange => "this.form.submit()" %>
+			<%= f.submit "Add to Setlist", class: "btn btn-primary add_to_list", :onclick => "window.location.reload()", :hidden => true %>
+			<%end%>
+			</td>
 		<td><b><%= button_to '-', item, method: :delete, :class => "btn, btn-danger" %></b></td>
 </tr>
     <% end %>
