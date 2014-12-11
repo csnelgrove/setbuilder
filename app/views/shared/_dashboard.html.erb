@@ -57,7 +57,7 @@
             </div>
 		<div class="col-md-9" style="margin: 10px;"><%= post.message.html_safe %>  <% if post.user = current_user %>
             <span>
-            <%= button_to '-', post, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn, btn-danger add_to_list" %></div>
+            <%= link_to 'Delete This Post', post, method: :delete, data: { confirm: 'Are you sure?' }, :style => "float: right;" %></div>
             <%end%> </span>
 
         </div>
