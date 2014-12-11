@@ -16,4 +16,4 @@
 //= require jquery_ujs
 //= require jquery-ui/sortable
 //= require jquery-ui/effect-highlight
-
+//= require tinymce-jquery

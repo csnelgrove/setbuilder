@@ -4,18 +4,22 @@
 
 <div class="row">
 
-<div class = "col-md-5">
+<div class = "col-md-6">
 <div class="panel panel-primary">
   <!-- Default panel contents -->
   <div class="panel-heading"><strong>This Weeks Setlist</strong></div>
   <div class="panel-body" >
       <% if !thisweek_setlist.nil? %>
-    <p> <%=thisweek_setlist.publish_message %></p>
+    <p> <%=thisweek_setlist.publish_message.html_safe %></p>
       <% end %>
   </div>
  <% if !thisweek_setlist.nil? %>
   <!-- Table -->
 <table class="table">
+    <th></th>
+    <th>Key</th>
+    <th>Chord Chart</th>
+    <th>Vocal Sheet</th>
 	<% thisweek_setlist.setlist_items.rank(:song_order).each do |item| %>
 		<tr>
 			<td><a href ="/songs/<%=item.song.id%>"><%= item.song.song_title %></a> <% if item.song.alt_title.blank? %> <%else%> (<%= item.song.alt_title %>) <%end%></td>
@@ -37,8 +41,8 @@
 
 
 
-<div class = "col-md-7">
-<div class="panel panel-danger">
+<div class = "col-md-6">
+<div class="panel panel-default">
 	<div class="panel-heading"><strong>Team Wall</strong></div>
 	<div class="panel-body">
 		</div>

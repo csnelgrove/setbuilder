@@ -28,6 +28,7 @@ gem "paperclip", "~> 4.2"
 gem 'will_paginate'
 gem 'stripe'
 gem 'ranked-model'
+gem 'tinymce-rails'
 
 
 group :production do
