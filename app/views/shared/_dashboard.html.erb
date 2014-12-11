@@ -55,10 +55,13 @@
             <br><b><%= post.user.name %></center></b>
 
             </div>
-		<div class="col-md-9" style="margin: 10px;"><%= post.message.html_safe %>  <% if post.user = current_user %>
+		<div class="col-md-9" style="margin: 10px;"><%= post.message.html_safe %>
+            <% if post.user == current_user %>
             <span>
             <%= link_to 'Delete This Post', post, method: :delete, data: { confirm: 'Are you sure?' }, :style => "float: right;" %></div>
-            <%end%> </span>
+           </span>
+            <%else%>
+            <%end%>
 
         </div>
         <%end%>
