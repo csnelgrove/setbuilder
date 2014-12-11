@@ -25,7 +25,7 @@
         <td> <%= item.song.song_title %></td>
 		<td> <%= form_for item, :remote => true do |f|  %>
 			<%= f.collection_select :leader_id, User.all ,:id, :name, include_blank: true, :onchange => "this.form.submit()" %>
-			<%= f.submit "Add to Setlist", class: "btn btn-primary add_to_list", :onclick => "window.location.reload()", :hidden => true %>
+
 			<%end%>
 			</td>
 		<td><b><%= button_to '-', item, method: :delete, :class => "btn, btn-danger" %></b></td>
@@ -36,14 +36,11 @@
 
 </table>
 
-
-<% if @setlist.published? %>
-<a href= "/publish_new?id=<%=@setlist.id%>" class="btn btn-success">Send Updated Set</span>
-<% else %>
-<a href= "/publish_new?id=<%=@setlist.id%>" class="btn btn-success">Send Setlist</span>
-<% end %>
-
+<a href="/publish?id=<%=current_setlist.id%>&view=popup" data-toggle="modal" data-target="#remoteModal2" class="btn btn-success btn" style="float: left;">Publish Setlist</a>
 <br> 
+
+
 <a style="float: right;" href="/setlists">View All Setlists</a>
+
 
 

@@ -8,9 +8,9 @@
 <div class="panel panel-primary">
   <!-- Default panel contents -->
   <div class="panel-heading"><strong>This Weeks Setlist</strong></div>
-  <div class="panel-body">
+  <div class="panel-body" >
       <% if !thisweek_setlist.nil? %>
-    <p> </p>
+    <p> <%=thisweek_setlist.publish_message %></p>
       <% end %>
   </div>
  <% if !thisweek_setlist.nil? %>
@@ -26,8 +26,13 @@
 		</tr>
 	<% end %>
 </table>
+<%else%>
+  <center> <h4>No Setlist Published for This Week</h4></center>
+
 <%end%>
-</div>
+
+
+    </div>
 </div>
 
 

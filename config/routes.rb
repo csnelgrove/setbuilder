@@ -8,6 +8,7 @@ Churchos::Application.routes.draw do
 
   resources :setlists
   match 'publish_new' => 'setlists#publish_new'
+  match 'publish' => 'setlists#publish'
   
   resources :setlist_items do
     post :update_song_order, on: :collection

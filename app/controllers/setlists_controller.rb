@@ -54,10 +54,8 @@ class SetlistsController < ApplicationController
   end
   
   def publish_new
-    @setlist = Setlist.find(params[:id])
+    @setlist = Setlist.find(params[:setlist][:id])
     @setlist_items = @setlist.setlist_items.rank(:song_order).all
-    @setlist.update_attribute(:published, true)
-    @setlist.save!
     
     respond_to do |format|
       if @setlist.update_attributes(params[:setlist])
@@ -65,11 +63,23 @@ class SetlistsController < ApplicationController
         format.html { redirect_to :root, :notice => 'Setlist Published' }
         format.json { head :ok }
       else
+           format.html { redirect_to :root, :notice => 'Setlist Error Published' }
        # format.html { render :action => "edit" }
         #format.json { render :json => @personnel.errors, :status => :unprocessable_entity }
       end
     end 
   end
+
+
+
+
+def publish
+    @setlist = Setlist.find(params[:id])
+
+
+ end
+
+
 
   # POST /setlists
   # POST /setlists.json

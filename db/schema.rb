@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141205172423) do
+ActiveRecord::Schema.define(:version => 20141211164809) do
 
   create_table "families", :force => true do |t|
     t.integer  "user_id"
@@ -101,8 +101,9 @@ ActiveRecord::Schema.define(:version => 20141205172423) do
     t.boolean  "published"
     t.string   "user_id"
     t.date     "service_date"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "publish_message"
   end
 
   create_table "songs", :force => true do |t|
