@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141211203337) do
+ActiveRecord::Schema.define(:version => 20141215143839) do
 
   create_table "families", :force => true do |t|
     t.integer  "user_id"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(:version => 20141211203337) do
     t.integer  "vocal_sheet_file_size"
     t.datetime "vocal_sheet_updated_at"
     t.string   "youtube_link"
+    t.string   "ccli_id"
   end
 
   create_table "user_sessions", :force => true do |t|

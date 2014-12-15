@@ -23,7 +23,7 @@
 <div class ="row col-md-5">
 
   <div class="field">
-    <%= f.label :song_title, :name => "Alternate Title" %>
+    <%= f.label :song_title, :name => "Song Title" %>
     <%= f.text_field :song_title, :class => "form-control" %>
   </div>
   <div class="field">
@@ -52,6 +52,9 @@
 </div>
 
 <div class ="col-md-5">
+    <%= f.label :ccli_id, "CCLI ID", :name => "CCLI ID" %>
+    <%= f.text_field :ccli_id, :class => "form-control" %>
+
 	<%= f.label :youtube_link, "YouTube ID" %><br />
     <%= f.text_field :youtube_link, :class => "form-control" %><br><br>
 	<object class ="col-md-12" height="300"

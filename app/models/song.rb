@@ -1,5 +1,5 @@
 class Song < ActiveRecord::Base
-  attr_accessible :alt_title, :key, :song_title, :tempo, :chart, :vocal_sheet, :youtube_link
+  attr_accessible :alt_title, :key, :song_title, :tempo, :chart, :vocal_sheet, :youtube_link, :ccli_id
   has_attached_file :chart, 
                     :default_url => "/images/:style/missing.png", 
                     :styles => { :thumb => ["120x120>", :jpg], :preview => ["800x1150>", :jpg] },
