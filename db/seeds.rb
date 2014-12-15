@@ -12,7 +12,7 @@
 
 Role.create!(:name => 'admin', :description => 'Super Admin')
 Role.create!(:name => 'worship_leader', :description => 'Worship Leader')
-Role.create!(:name => 'musician', :description => 'Musicisan')
+Role.create!(:name => 'musician', :description => 'Musician')
 Role.create!(:name => 'vocalist', :description => 'Vocalist')
 Role.create!(:name => 'av', :description => 'Audio Visual Team')
 
