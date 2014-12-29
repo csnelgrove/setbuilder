@@ -19,10 +19,9 @@ class Song < ActiveRecord::Base
    def self.search(search)
       
       if search.blank?
-        all
+        find(:all, :order => "song_title")
       elsif search
-         where('song_title LIKE ?', "%#{search}%")
-
+         where('song_title LIKE ?', "%#{search}%").order('song_title ASC')
       else
         scoped
       end
