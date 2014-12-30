@@ -15,7 +15,7 @@ Setbuilder::Application.routes.draw do
   end
   resources :songs
   match "/song_search" => "songs#song_search"
-
+match "/song_sketch" => "songs#song_sketch"
   resources :notifications
 
 

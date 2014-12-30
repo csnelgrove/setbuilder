@@ -26,6 +26,17 @@ class SongsController < ApplicationController
     end
   end
   
+  def song_sketch
+    @song = Song.find(params[:id])
+      if current_user.roles.where(:name =>"worship_leader").present?
+    @setlist_item = current_setlist.setlist_items.new
+       end
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @song }
+    end
+  end
 
 
   # GET /songs/new
