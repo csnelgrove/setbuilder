@@ -20,7 +20,7 @@ class Song < ActiveRecord::Base
       elsif search
         paginate :per_page => @per_page, :page => page,
              :conditions => ["song_title LIKE ?", "%#{search}%"],
-             :order => 'song_title DESC'
+             :order => 'song_title'
       else
         scoped
       end
