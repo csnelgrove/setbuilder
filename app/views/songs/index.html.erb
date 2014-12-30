@@ -4,23 +4,25 @@
 
 
 <%= javascript_include_tag "song.js" %>
-<%= javascript_include_tag "fly_to_list.js" %>
-	
+
+
+
 
 <div class="row content_row">
 
 
 
 
-	<%= form_tag song_search_path, :method => 'get', :id => "song_search_form" do %>
+<%= form_tag songs_path, :method => 'get', :id => "song_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
 
-		 <div id="song_search_box" style="margin-bottom: 20px;"> <%= text_field_tag :search, params[:search], :placeholder => "Search For A Song", :class => "form-control col-md-4", :id => "song_search_field" %> </div>
+<% end %>
 
-		    <%= submit_tag "Search", :name => nil, :disabled => true, :hidden => true, :id => "searchsubmit" %>
-		<% end %>
+ <div id="songs"><%= render 'song_list' %></div>
 
-		<div id="song_search_results"></div>
 
-	
 </div>
 

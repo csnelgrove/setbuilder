@@ -38,6 +38,8 @@ GEM
     best_in_place (2.1.0)
       jquery-rails
       rails (~> 3.1)
+    bootstrap-will_paginate (0.0.10)
+      will_paginate
     builder (3.0.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -138,7 +140,7 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    will_paginate (3.0.0)
+    will_paginate (3.0.7)
 
 PLATFORMS
   ruby
@@ -147,6 +149,7 @@ DEPENDENCIES
   authlogic
   bcrypt
   best_in_place
+  bootstrap-will_paginate (~> 0.0.10)
   coffee-rails
   highcharts-rails (~> 3.0.0)
   jquery-rails
@@ -162,4 +165,4 @@ DEPENDENCIES
   tinymce-rails
   turn
   uglifier (>= 1.0.3)
-  will_paginate
+  will_paginate (~> 3.0.6)

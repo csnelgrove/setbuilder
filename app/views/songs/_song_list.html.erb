@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table" id="songs_table">
   <tr>
     <th>Song title</th>
     <th>Key</th>
@@ -33,11 +33,15 @@
      <%end%>
  </tr>
 <% end %>
+
+
 </table>
+
 
 <br />
 
 
+<%= will_paginate @songs %>
 </div>
 
 

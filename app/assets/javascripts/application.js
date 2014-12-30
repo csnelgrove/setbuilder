@@ -17,3 +17,15 @@
 //= require jquery-ui/sortable
 //= require jquery-ui/effect-highlight
 //= require tinymce-jquery
+
+
+
+
+$(function () {
+  $('#songs_table th a, #songs_table .pagination a').live('click', &crarr;
+    function () {
+      $.getScript(this.href);
+      return false;
+    }
+  );
+});

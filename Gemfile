@@ -25,7 +25,8 @@ gem "nested_form"
 gem 'best_in_place'
 gem "highcharts-rails", "~> 3.0.0"
 gem "paperclip", "~> 4.2"
-gem 'will_paginate'
+gem 'will_paginate', '~> 3.0.6'
+gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'stripe'
 gem 'ranked-model'
 gem 'tinymce-rails'

@@ -4,24 +4,23 @@ class Song < ActiveRecord::Base
                     :default_url => "/images/:style/missing.png", 
                     :styles => { :thumb => ["120x120>", :jpg], :preview => ["800x1150>", :jpg] },
                     :convert_options => { :all => '-colorspace RGB -flatten -density 300 -quality 100' }
-                    
-                    
   has_attached_file :vocal_sheet, 
                     :default_url => "/images/:style/missing.png", 
                     :styles => { :thumb => ["120x120>", :jpg], :preview => ["800x1150>", :jpg] },                
                     :convert_options => { :all => '-colorspace RGB -flatten -density 300 -quality 100' }
                     
-                    
   validates_attachment_content_type :chart, :content_type => "application/pdf"
   validates_attachment_content_type :vocal_sheet, :content_type => "application/pdf"
   has_many :setlist_items
   
-   def self.search(search)
+   def self.search(search, page)
       
       if search.blank?
         find(:all, :order => "song_title")
       elsif search
-         where('song_title LIKE ?', "%#{search}%").order('song_title ASC')
+        paginate :per_page => @per_page, :page => page,
+             :conditions => ["song_title LIKE ?", "%#{search}%"],
+             :order => 'song_title DESC'
       else
         scoped
       end

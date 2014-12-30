@@ -1,15 +1,15 @@
 class SongsController < ApplicationController
   # GET /songs
   # GET /songs.json
+
+
   def index
-    @songs = Song.all
+     require 'will_paginate/array'
+        @songs = Song.search(params[:search], params[:page]).paginate(page: params[:page], per_page: 15)
      if current_user.roles.where(:name =>"worship_leader").present?
     @setlist_item = current_setlist.setlist_items.new
      end
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @songs }
-    end
+
   end
 
   # GET /songs/1
@@ -26,13 +26,7 @@ class SongsController < ApplicationController
     end
   end
   
-  def song_search
-    @songs =  Song.search(params[:search])
-      if current_user.roles.where(:name =>"worship_leader").present?
-    @setlist_item = current_setlist.setlist_items.new
-       end
-  
-  end
+
 
   # GET /songs/new
   # GET /songs/new.json
@@ -93,4 +87,7 @@ class SongsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+
 end

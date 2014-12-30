@@ -1,12 +1,8 @@
 $(function() {
-  $("#song_search_box input").keyup(function() {
-
-    $.get($("#song_search_form").attr("action"), $("#song_search_form").serialize(), null, "script");
+  $("#song_search input").keyup(function() {
+    $.get($("#song_search").attr("action"), $("#song_search").serialize(), null, "script");
     return false;
   });
-
-
-
 });
 
 
@@ -18,6 +14,5 @@ $( document ).ready(function() {
 	    $('#song_search_field').keyup();
  		$('#song_search_field').focus();
 
-
-
 });
+
