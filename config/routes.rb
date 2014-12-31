@@ -9,13 +9,15 @@ Setbuilder::Application.routes.draw do
   resources :setlists
   match 'publish_new' => 'setlists#publish_new'
   match 'publish' => 'setlists#publish'
-  
+  match '/setlist-view' => 'setlists#setlist_view'
+
   resources :setlist_items do
     post :update_song_order, on: :collection
   end
   resources :songs
   match "/song_search" => "songs#song_search"
-match "/song_sketch" => "songs#song_sketch"
+  match "/song_sketch" => "songs#song_sketch"
+
   resources :notifications
 
 

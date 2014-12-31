@@ -15,9 +15,15 @@ class SetlistsController < ApplicationController
   def show
     @setlist = Setlist.find(params[:id])
     @songs = @setlist.setlist_items.rank(:song_order).all
-    
-    
-    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @setlist }
+    end
+  end
+
+def setlist_view
+    @setlist = Setlist.find(params[:id])
+    @songs = @setlist.setlist_items.rank(:song_order).all
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @setlist }
