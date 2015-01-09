@@ -1,6 +1,7 @@
 class SetlistsController < ApplicationController
   # GET /setlists
   # GET /setlists.json
+
   def index
     @setlists = Setlist.all
 
@@ -22,8 +23,19 @@ class SetlistsController < ApplicationController
   end
 
 def setlist_view
+    require "pdf/merger"
     @setlist = Setlist.find(params[:id])
     @songs = @setlist.setlist_items.rank(:song_order).all
+
+    pdf = PDF::Merger.new
+    failure_list= []
+    @songs.each do |item|
+        pdf.add_file Rails.root.to_s + "/public" + item.song.chart.url(:original, timestamp: false)
+
+    end
+    pdf.add_javascript "this.print(true);"
+    pdf.save_as  Rails.root.to_s + "/public/system/tmp" + "/setlist_" + Time.now.to_i.to_s + ".pdf", failure_list
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @setlist }

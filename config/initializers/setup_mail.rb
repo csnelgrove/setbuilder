@@ -1,7 +1,7 @@
 ActionMailer::Base.smtp_settings = {  
-  :address              => "localhost",  
+  :address              => "smtp-relay.gmail.com",
   :port                 => 25,    
-
+  :from => 'administrator@run.church',
 
 
 }
