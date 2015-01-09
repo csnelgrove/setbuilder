@@ -7,7 +7,7 @@
 
 <ul>
 <% @setlist_items.each do |item|%>
-<li><a href="http://run.church/songs/<%=item.song.id%>"> <%= item.song.song_title %> - <%= item.song.key %> - <%= User.where('id = ?',item.leader_id).last.name.split(" ")[0] %> </a></li>
+<li><a href="http://setbuilder.run.church/songs/<%=item.song.id%>"> <%= item.song.song_title %> - <%= item.song.key %> - <%= User.where('id = ?',item.leader_id).last.name.split(" ")[0] %> </a></li>
 <% end %>
 
 </ul>
