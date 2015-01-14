@@ -28,7 +28,7 @@
       <tr data-item-id=<%= "#{item.id}" %> class="item">
         <td> <%= item.song.song_title %></td>
 		<td> <%= form_for item, :remote => true do |f|  %>
-			<%= best_in_place item, :leader_id, :type => :select, :collection => @vocalists.collect {|p| [ p.id, p.name ]}  %>
+			<%= best_in_place item, :leader_id, :type => :select, :collection => @vocalists.collect {|p| [ p.id, p.name ]}, :value => "Select A Leader"  %>
 
 			<%end%>
 			</td>
