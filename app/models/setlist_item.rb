@@ -6,7 +6,6 @@ class SetlistItem < ActiveRecord::Base
     belongs_to :song
     belongs_to :setlist
 
-  
   include RankedModel
    ranks :song_order
   

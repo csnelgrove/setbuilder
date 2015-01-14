@@ -30,7 +30,7 @@
 <div class="content_row">
 
 
-	<object class ="col-md-12 container" height="500"	data="http://www.youtube.com/v/<%= @song.youtube_link %>" style="padding-top: 20px;"></object>
+	<object class ="col-md-12 container" height="500"	data="http://www.youtube.com/embed/<%= @song.youtube_link %>" style="padding-top: 20px;"></object>
     <center><br><strong><% if @song.ccli_id.blank? %> <%else%> CCLI# <%=@song.ccli_id%> <%end%></strong><br></center>
 
 

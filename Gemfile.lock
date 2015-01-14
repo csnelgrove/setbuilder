@@ -79,7 +79,6 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    pdf-merger (0.3.2)
     polyglot (0.3.5)
     rack (1.4.5)
     rack-cache (1.2)
@@ -112,7 +111,6 @@ GEM
     rest-client (1.7.2)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    rjb (1.5.3)
     sass (3.4.5)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -159,10 +157,8 @@ DEPENDENCIES
   mysql2
   nested_form
   paperclip (~> 4.2)
-  pdf-merger
   rails (= 3.2.19)
   ranked-model
-  rjb
   sass-rails
   sqlite3
   stripe
