@@ -1,7 +1,8 @@
 
 <h2 class="page-header"> Song Search 
-<%= link_to 'Add Song', new_song_path, :class => "btn btn-success", :style => "float: right;" %>	</h2>
-
+  <% if current_user.roles.where(:name =>"worship_leader").present?%>
+    <%= link_to 'Add Song', new_song_path, :class => "btn btn-success", :style => "float: right;" %>  <%end%>
+	</h2>
 
 <%= javascript_include_tag "song.js" %>
 
