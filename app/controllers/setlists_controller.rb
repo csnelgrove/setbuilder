@@ -3,7 +3,7 @@ class SetlistsController < ApplicationController
   # GET /setlists.json
 
   def index
-    @setlists = Setlist.all
+    @setlists = Setlist.where(published: true)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -58,20 +58,22 @@
                     <a href="/songs"><i class="fa fa-fw fa-music"></i> Song Search</a>
                 </li>
 			
-                		<% if current_user.roles.where(:name =>"worship_leader").present?%>
+
       			<li>
 					
                     <a href="javascript:;" data-toggle="collapse" data-target="#setlist_menu"><i class="fa fa-fw fa-list"></i> Manage Setlists <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="setlist_menu" class="collapse">
                         <li>
-                          <a href="/setlists">Saved Set's</a>
+                          <a href="/setlists">Published Set's</a>
                         </li>
+              <% if current_user.roles.where(:name =>"worship_leader").present?%>
                         <li>
                             <a href="/setlists/new">Create New</a>
                         </li>
+                         <%end%>
                     </ul>
                 </li>
-                <%end%>
+
 					<% if current_user.roles.where(:name =>"admin").present?%>
                 <li>
 					
