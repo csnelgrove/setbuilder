@@ -45,6 +45,13 @@ class User < ActiveRecord::Base
         end
       end
 
+
+def deliver_password_reset_instructions!
+    reset_perishable_token!
+    ResetMailer.deliver_password_reset_instructions(self)
+  end
+
+
 def build_profile
     Profile.create(user_id: self) 
   end

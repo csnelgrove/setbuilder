@@ -28,7 +28,7 @@ Setbuilder::Application.routes.draw do
   match 'logout' => "user_sessions#destroy", :as => :logout
    
 
-
+ resources :password_resets, :only => [ :new, :create, :edit, :update ]
 
 ######## Notification Routes   
   
