@@ -1,49 +1,28 @@
 class PasswordResetsController < ApplicationController
-  before_filter :require_no_user
-  before_filter :load_user_using_perishable_token, :only => [ :edit, :update ]
 
-  def new
+def create
+  user = User.find_by_email(params[:email])
+  user.send_password_reset if user
+  redirect_to root_url, :notice => "Email sent with password reset instructions."
+end
+
+def edit
+  @user = User.find_by_password_reset_token!(params[:id])
+end
+
+def update
+  @user = User.find_by_password_reset_token!(params[:id])
+  if @user.password_reset_sent_at < 2.hours.ago
+    redirect_to new_password_reset_path, :alert => "Password reset has expired."
+  elsif @user.update_attributes(params[:user])
+    redirect_to root_url, :notice => "Password has been reset!"
+  else
+    render :edit
   end
-
-  def create
-    @user = User.find_by_email(params[:email])
-    if @user
-      @user.deliver_password_reset_instructions!
-      flash[:notice] = "Instructions to reset your password have been emailed to you"
-      redirect_to root_path
-    else
-      flash.now[:error] = "No user was found with email address #{params[:email]}"
-      render :action => :new
-    end
-  end
-
-  def edit
-  end
-
-  def update
-    @user.password = params[:password]
-    # Only if your are using password confirmation
-    # @user.password_confirmation = params[:password]
-
-    # Use @user.save_without_session_maintenance instead if you
-    # don't want the user to be signed in automatically.
-    if @user.save
-      flash[:success] = "Your password was successfully updated"
-      redirect_to @user
-    else
-      render :action => :edit
-    end
-  end
+end
 
 
-  private
 
-  def load_user_using_perishable_token
-    @user = User.find_using_perishable_token(params[:id])
-    unless @user
-      flash[:error] = "We're sorry, but we could not locate your account"
-      redirect_to root_url
-    end
-  end
+
 end
 
