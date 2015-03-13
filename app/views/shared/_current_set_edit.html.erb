@@ -13,6 +13,7 @@
 <div style="padding: 10px;">
 <table class="table table-striped" id="sortable">
 <th>Song</th>
+<th>Key</th>
 <th>Leader</th>
 <th>Remove</th>
 <tr> 
@@ -27,6 +28,7 @@
     <% @setlist_items.each do |item| %>
       <tr data-item-id=<%= "#{item.id}" %> class="item">
         <td> <%= item.song.song_title %></td>
+        <td> <%= item.song.key %></td>
 		<td> <%= form_for item, :remote => true do |f|  %>
 			<%= best_in_place item, :leader_id, :type => :select, :collection => @vocalists.collect {|p| [ p.id, p.name ]}, :include_blank => true %>
 

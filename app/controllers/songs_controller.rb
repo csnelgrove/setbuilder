@@ -100,5 +100,12 @@ class SongsController < ApplicationController
   end
 
 
+    def song_list
+       @songs = Song.all
+       respond_to do |format|
+           format.json { render json: @songs }
+       end
+    end
+
 
 end

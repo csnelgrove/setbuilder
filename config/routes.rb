@@ -30,6 +30,7 @@ Setbuilder::Application.routes.draw do
 
  resources :password_resets
 
+  match '/songs_list', to: 'songs#song_list', via: [:get],  :format => 'json'
 
 ######## Notification Routes   
   
