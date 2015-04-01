@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150115160656) do
+ActiveRecord::Schema.define(:version => 20150401171842) do
 
   create_table "families", :force => true do |t|
     t.integer  "user_id"
@@ -111,8 +111,8 @@ ActiveRecord::Schema.define(:version => 20150115160656) do
     t.string   "alt_title"
     t.string   "key"
     t.integer  "tempo"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.string   "chart_file_name"
     t.string   "chart_content_type"
     t.integer  "chart_file_size"
@@ -123,6 +123,10 @@ ActiveRecord::Schema.define(:version => 20150115160656) do
     t.datetime "vocal_sheet_updated_at"
     t.string   "youtube_link"
     t.string   "ccli_id"
+    t.string   "backing_track_file_name"
+    t.string   "backing_track_content_type"
+    t.integer  "backing_track_file_size"
+    t.datetime "backing_track_updated_at"
   end
 
   create_table "user_sessions", :force => true do |t|

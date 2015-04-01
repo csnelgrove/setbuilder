@@ -39,16 +39,27 @@
     <%= f.number_field :tempo, :class => "form-control" %>
   </div>
 
-	<div class ="row col-md-6">
+	<div class ="row col-md-4">
 	<strong>Chord Chart:</strong><br> 
 	<a href="<%= @song.chart.url %>" target="top"><button type="button" class="btn btn-default"><%= image_tag @song.chart.url(:thumb) %></button></a>
 	<br><%= f.file_field :chart, :label => "Update Chart" %>
 	</div>
-	<div class ="row col-md-6">
+	<div class ="row col-md-4">
 	<strong>Vocal Sheet</strong>:<br>
 	<a href="<%= @song.vocal_sheet.url %>" target="top" > <button type="button" class="btn btn-default"><%= image_tag @song.vocal_sheet.url(:thumb) %></button> </a> 
 	<br><%= f.file_field :vocal_sheet %>	
 	</div>	
+    <div class ="row col-md-4">
+	<strong>Backing Track</strong>:<br>
+	<audio controls>
+  <source src="<%= @song.backing_track.url %>" type="video/mp4">
+  I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264.
+  <!-- You can embed a Flash player here, to play your mp4 video in older browsers -->
+</audio>
+
+	<br><%= f.file_field :backing_track %>
+	</div>
+
 </div>
 
 <div class ="col-md-5">

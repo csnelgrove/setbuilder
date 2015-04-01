@@ -11,6 +11,8 @@
 		           &nbsp  <%= f.submit "Add to Setlist", class: "btn btn-primary add_to_list", :onclick => "window.location.reload()" %>
 		      <% end %>
         <%end%>
+
+
 	</div>
 	<div class="col-md-2" style="padding-top: 10px">
 
@@ -28,7 +30,15 @@
 	
 </div>
 <div class="content_row">
+ <% if @song.backing_track? %>
+        <h4> Backing Track: </h4>
+        	<audio controls>
+  <source src="<%= @song.backing_track.url %>" type="video/mp4">
+  I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264.
+  <!-- You can embed a Flash player here, to play your mp4 video in older browsers -->
+</audio>
 
+        <%end%>
 
 	<object class ="col-md-12 container" height="500"	data="http://www.youtube.com/embed/<%= @song.youtube_link %>" style="padding-top: 20px;"></object>
     <center><br><strong><% if @song.ccli_id.blank? %> <%else%> CCLI# <%=@song.ccli_id%> <%end%></strong><br></center>
