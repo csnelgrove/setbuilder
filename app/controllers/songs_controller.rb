@@ -15,6 +15,8 @@ class SongsController < ApplicationController
   # GET /songs/1
   # GET /songs/1.json
   def show
+
+    if current_user
     @song = Song.find(params[:id])
       if current_user.roles.where(:name =>"worship_leader").present?
     @setlist_item = current_setlist.setlist_items.new
@@ -24,6 +26,10 @@ class SongsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @song }
     end
+    else
+      redirect_to :root, notice: 'Log In Fool...'
+      end
+
   end
   
   def song_sketch
