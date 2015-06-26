@@ -39,6 +39,14 @@
 </audio>
 
         <%end%>
+    <br>
+
+ <% if @song.has_multitrack? %>
+
+    <a href="http://multitrack.run.church?sid=<%=@song.id%>" class="btn btn-success" target="_blank"><i class="fa fa-play-circle-o fa-lg"></i> Open MultiTrack Player</a>
+
+
+    <%end%>
 
 	<object class ="col-md-12 container" height="500"	data="http://www.youtube.com/embed/<%= @song.youtube_link %>" style="padding-top: 20px;"></object>
     <center><br><strong><% if @song.ccli_id.blank? %> <%else%> CCLI# <%=@song.ccli_id%> <%end%></strong><br></center>

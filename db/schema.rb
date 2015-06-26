@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150401171842) do
+ActiveRecord::Schema.define(:version => 20150626170440) do
 
   create_table "families", :force => true do |t|
     t.integer  "user_id"
@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(:version => 20150401171842) do
     t.string   "backing_track_content_type"
     t.integer  "backing_track_file_size"
     t.datetime "backing_track_updated_at"
+    t.boolean  "has_multitrack"
   end
 
   create_table "user_sessions", :force => true do |t|

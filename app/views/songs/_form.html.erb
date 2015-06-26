@@ -44,11 +44,13 @@
 	<a href="<%= @song.chart.url %>" target="top"><button type="button" class="btn btn-default"><%= image_tag @song.chart.url(:thumb) %></button></a>
 	<br><%= f.file_field :chart, :label => "Update Chart" %>
 	</div>
+
 	<div class ="row col-md-4">
 	<strong>Vocal Sheet</strong>:<br>
 	<a href="<%= @song.vocal_sheet.url %>" target="top" > <button type="button" class="btn btn-default"><%= image_tag @song.vocal_sheet.url(:thumb) %></button> </a> 
-	<br><%= f.file_field :vocal_sheet %>	
+	<br><%= f.file_field :vocal_sheet %>	<br />
 	</div>	
+    <br />
     <div class ="row col-md-4">
 	<strong>Backing Track</strong>:<br>
 	<audio controls>
@@ -60,6 +62,8 @@
 	<br><%= f.file_field :backing_track %>
 	</div>
 
+    <%= f.label :has_multitrack, "Have You Uploaded Multitracks?" %>
+   <%= f.check_box :has_multitrack %> <br />
 </div>
 
 <div class ="col-md-5">
@@ -71,6 +75,8 @@
 	<object class ="col-md-12" height="300"
 	data="http://www.youtube.com/v/<%= @song.youtube_link %>">
 	</object>
+
+
 </div>
 
 </div>
